@@ -880,12 +880,12 @@
         "3box>ipfs>libp2p-crypto>iso-random-stream": true,
         "3box>ipfs>libp2p-crypto>libp2p-crypto-secp256k1": true,
         "3box>ipfs>libp2p-crypto>multihashing-async": true,
+        "3box>ipfs>libp2p-crypto>node-forge": true,
         "3box>ipfs>protons": true,
         "3box>tweetnacl": true,
         "browserify>buffer": true,
         "ethereumjs-util>ethereum-cryptography>browserify-aes": true,
-        "gh-pages>async": true,
-        "mockttp>node-forge": true
+        "gh-pages>async": true
       }
     },
     "3box>ipfs>libp2p-crypto>asn1.js": {
@@ -941,6 +941,29 @@
         "browserify>process": true,
         "ethereumjs-util>ethereum-cryptography>blakejs": true,
         "ethers>@ethersproject/keccak256>js-sha3": true
+      }
+    },
+    "3box>ipfs>libp2p-crypto>node-forge": {
+      "globals": {
+        "Blob": true,
+        "MutationObserver": true,
+        "QuotaExceededError": true,
+        "URL.createObjectURL": true,
+        "URL.revokeObjectURL": true,
+        "Worker": true,
+        "addEventListener": true,
+        "document": true,
+        "jQuery": true,
+        "localStorage": true,
+        "navigator": true,
+        "postMessage": true,
+        "removeEventListener": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "browserify>browser-resolve": true,
+        "browserify>process": true,
+        "browserify>timers-browserify": true
       }
     },
     "3box>ipfs>libp2p-kad-dht": {
@@ -1037,12 +1060,12 @@
         "3box>ipfs>err-code": true,
         "3box>ipfs>interface-datastore": true,
         "3box>ipfs>libp2p-crypto": true,
+        "3box>ipfs>libp2p-crypto>node-forge": true,
         "3box>ipfs>libp2p-keychain>sanitize-filename": true,
         "3box>ipfs>merge-options": true,
         "3box>ipfs>pull-stream": true,
         "browserify>buffer": true,
-        "gh-pages>async": true,
-        "mockttp>node-forge": true
+        "gh-pages>async": true
       }
     },
     "3box>ipfs>libp2p-keychain>sanitize-filename": {
@@ -1430,8 +1453,8 @@
         "process": true
       },
       "packages": {
-        "analytics-node>ms": true,
-        "browserify>process": true
+        "browserify>process": true,
+        "jsonwebtoken>ms": true
       }
     },
     "3box>ipfs>libp2p-websocket-star-multi>libp2p-websocket-star>socket.io-pull-stream>uuid": {
@@ -1859,7 +1882,7 @@
         "setTimeout": true
       },
       "packages": {
-        "analytics-node>ms": true
+        "jsonwebtoken>ms": true
       }
     },
     "3box>ipfs>stream-to-pull-stream": {
@@ -3163,27 +3186,8 @@
     },
     "@metamask/controllers>web3-provider-engine>eth-sig-util": {
       "packages": {
-        "@metamask/controllers>web3-provider-engine>eth-sig-util>ethereumjs-abi": true,
-        "@metamask/controllers>web3-provider-engine>ethereumjs-util": true
-      }
-    },
-    "@metamask/controllers>web3-provider-engine>eth-sig-util>ethereumjs-abi": {
-      "packages": {
-        "@metamask/controllers>web3-provider-engine>eth-sig-util>ethereumjs-abi>ethereumjs-util": true,
-        "bn.js": true,
-        "browserify>buffer": true
-      }
-    },
-    "@metamask/controllers>web3-provider-engine>eth-sig-util>ethereumjs-abi>ethereumjs-util": {
-      "packages": {
-        "3box>ethers>elliptic": true,
-        "@metamask/controllers>web3-provider-engine>ethereumjs-util>ethjs-util": true,
-        "bn.js": true,
-        "browserify>assert": true,
-        "browserify>buffer": true,
-        "ethereumjs-util>create-hash": true,
-        "ethereumjs-util>ethereum-cryptography": true,
-        "ethereumjs-util>rlp": true
+        "@metamask/controllers>web3-provider-engine>ethereumjs-util": true,
+        "ethereumjs-abi": true
       }
     },
     "@metamask/controllers>web3-provider-engine>ethereumjs-util": {
@@ -3287,27 +3291,8 @@
     },
     "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util": {
       "packages": {
-        "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi": true,
-        "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-util": true
-      }
-    },
-    "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi": {
-      "packages": {
-        "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi>ethereumjs-util": true,
-        "bn.js": true,
-        "browserify>buffer": true
-      }
-    },
-    "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi>ethereumjs-util": {
-      "packages": {
-        "3box>ethers>elliptic": true,
-        "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-util>ethjs-util": true,
-        "bn.js": true,
-        "browserify>assert": true,
-        "browserify>buffer": true,
-        "ethereumjs-util>create-hash": true,
-        "ethereumjs-util>ethereum-cryptography": true,
-        "ethereumjs-util>rlp": true
+        "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-util": true,
+        "ethereumjs-abi": true
       }
     },
     "@metamask/eth-json-rpc-infura>eth-json-rpc-middleware>eth-sig-util>ethereumjs-util": {
@@ -4803,13 +4788,13 @@
         "analytics-node>@segment/loosely-validate-event": true,
         "analytics-node>axios": true,
         "analytics-node>axios-retry": true,
-        "analytics-node>lodash.isstring": true,
         "analytics-node>md5": true,
-        "analytics-node>ms": true,
         "analytics-node>remove-trailing-slash": true,
         "analytics-node>uuid": true,
         "browserify>assert": true,
-        "browserify>process": true
+        "browserify>process": true,
+        "jsonwebtoken>lodash.isstring": true,
+        "jsonwebtoken>ms": true
       }
     },
     "analytics-node>@segment/loosely-validate-event": {
@@ -5429,27 +5414,8 @@
     },
     "eth-json-rpc-middleware>eth-sig-util": {
       "packages": {
-        "eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi": true,
-        "eth-json-rpc-middleware>eth-sig-util>ethereumjs-util": true
-      }
-    },
-    "eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi": {
-      "packages": {
-        "bn.js": true,
-        "browserify>buffer": true,
-        "eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi>ethereumjs-util": true
-      }
-    },
-    "eth-json-rpc-middleware>eth-sig-util>ethereumjs-abi>ethereumjs-util": {
-      "packages": {
-        "3box>ethers>elliptic": true,
-        "bn.js": true,
-        "browserify>assert": true,
-        "browserify>buffer": true,
-        "eth-json-rpc-middleware>eth-sig-util>ethereumjs-util>ethjs-util": true,
-        "ethereumjs-util>create-hash": true,
-        "ethereumjs-util>ethereum-cryptography": true,
-        "ethereumjs-util>rlp": true
+        "eth-json-rpc-middleware>eth-sig-util>ethereumjs-util": true,
+        "ethereumjs-abi": true
       }
     },
     "eth-json-rpc-middleware>eth-sig-util>ethereumjs-util": {
@@ -7553,6 +7519,59 @@
         "browserify>url": true
       }
     },
+    "jsonwebtoken": {
+      "packages": {
+        "browserify>insert-module-globals>is-buffer": true,
+        "browserify>process": true,
+        "jsonwebtoken>jws": true,
+        "jsonwebtoken>lodash.includes": true,
+        "jsonwebtoken>lodash.isboolean": true,
+        "jsonwebtoken>lodash.isinteger": true,
+        "jsonwebtoken>lodash.isnumber": true,
+        "jsonwebtoken>lodash.isplainobject": true,
+        "jsonwebtoken>lodash.isstring": true,
+        "jsonwebtoken>lodash.once": true,
+        "jsonwebtoken>ms": true,
+        "jsonwebtoken>semver": true
+      }
+    },
+    "jsonwebtoken>jws": {
+      "packages": {
+        "browserify>buffer": true,
+        "browserify>process": true,
+        "browserify>stream-browserify": true,
+        "browserify>util": true,
+        "ethereumjs-wallet>safe-buffer": true,
+        "jsonwebtoken>jws>jwa": true
+      }
+    },
+    "jsonwebtoken>jws>jwa": {
+      "packages": {
+        "browserify>crypto-browserify": true,
+        "browserify>util": true,
+        "ethereumjs-wallet>safe-buffer": true,
+        "jsonwebtoken>jws>jwa>buffer-equal-constant-time": true,
+        "jsonwebtoken>jws>jwa>ecdsa-sig-formatter": true
+      }
+    },
+    "jsonwebtoken>jws>jwa>buffer-equal-constant-time": {
+      "packages": {
+        "browserify>buffer": true
+      }
+    },
+    "jsonwebtoken>jws>jwa>ecdsa-sig-formatter": {
+      "packages": {
+        "ethereumjs-wallet>safe-buffer": true
+      }
+    },
+    "jsonwebtoken>semver": {
+      "globals": {
+        "console": true
+      },
+      "packages": {
+        "browserify>process": true
+      }
+    },
     "koa>is-generator-function>has-tostringtag": {
       "packages": {
         "string.prototype.matchall>has-symbols": true
@@ -7635,29 +7654,6 @@
     "madge>rc>deep-extend": {
       "packages": {
         "browserify>buffer": true
-      }
-    },
-    "mockttp>node-forge": {
-      "globals": {
-        "Blob": true,
-        "MutationObserver": true,
-        "QuotaExceededError": true,
-        "URL.createObjectURL": true,
-        "URL.revokeObjectURL": true,
-        "Worker": true,
-        "addEventListener": true,
-        "document": true,
-        "jQuery": true,
-        "localStorage": true,
-        "navigator": true,
-        "postMessage": true,
-        "removeEventListener": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "browserify>browser-resolve": true,
-        "browserify>process": true,
-        "browserify>timers-browserify": true
       }
     },
     "nanoid": {
@@ -7986,16 +7982,20 @@
       "packages": {
         "@babel/runtime": true,
         "prop-types": true,
-        "prop-types>react-is": true,
         "react": true,
         "react-dom": true,
         "react-redux>hoist-non-react-statics": true,
-        "redux": true
+        "react-redux>react-is": true
       }
     },
     "react-redux>hoist-non-react-statics": {
       "packages": {
         "prop-types>react-is": true
+      }
+    },
+    "react-redux>react-is": {
+      "globals": {
+        "console": true
       }
     },
     "react-responsive-carousel": {

@@ -1859,6 +1859,11 @@
         "chokidar>is-binary-path>binary-extensions": true
       }
     },
+    "copy-webpack-plugin>p-limit": {
+      "packages": {
+        "copy-webpack-plugin>p-limit>yocto-queue": true
+      }
+    },
     "cross-spawn": {
       "builtin": {
         "child_process.spawn": true,
@@ -2204,19 +2209,23 @@
         "assert": true,
         "fs.existsSync": true,
         "fs.lstatSync": true,
+        "fs.promises": true,
         "fs.readFileSync": true,
         "fs.readdirSync": true,
         "fs.statSync": true,
         "fs.unlinkSync": true,
         "fs.writeFile": true,
         "fs.writeFileSync": true,
+        "path.dirname": true,
         "path.extname": true,
         "path.isAbsolute": true,
         "path.join": true,
         "path.normalize": true,
+        "path.posix.join": true,
         "path.relative": true,
         "path.resolve": true,
         "path.sep": true,
+        "url.pathToFileURL": true,
         "util.format": true,
         "util.inspect": true,
         "util.promisify": true
@@ -2231,6 +2240,7 @@
       "packages": {
         "eslint>@eslint/eslintrc": true,
         "eslint>@humanwhocodes/config-array": true,
+        "eslint>@nodelib/fs.walk": true,
         "eslint>ajv": true,
         "eslint>doctrine": true,
         "eslint>escape-string-regexp": true,
@@ -2242,11 +2252,14 @@
         "eslint>esutils": true,
         "eslint>fast-deep-equal": true,
         "eslint>file-entry-cache": true,
-        "eslint>functional-red-black-tree": true,
+        "eslint>find-up": true,
         "eslint>glob-parent": true,
         "eslint>globals": true,
+        "eslint>grapheme-splitter": true,
         "eslint>imurmurhash": true,
         "eslint>is-glob": true,
+        "eslint>is-path-inside": true,
+        "eslint>js-sdsl": true,
         "eslint>json-stable-stringify-without-jsonify": true,
         "eslint>levn": true,
         "eslint>lodash.merge": true,
@@ -2286,7 +2299,7 @@
         "process": true
       },
       "packages": {
-        "analytics-node>ms": true,
+        "jsonwebtoken>ms": true,
         "sinon>supports-color": true
       }
     },
@@ -2399,7 +2412,7 @@
         "process": true
       },
       "packages": {
-        "analytics-node>ms": true,
+        "jsonwebtoken>ms": true,
         "sinon>supports-color": true
       }
     },
@@ -2546,10 +2559,10 @@
         "eslint-plugin-jsdoc>@es-joy/jsdoccomment": true,
         "eslint-plugin-jsdoc>comment-parser": true,
         "eslint-plugin-jsdoc>escape-string-regexp": true,
+        "eslint-plugin-jsdoc>semver": true,
         "eslint-plugin-jsdoc>spdx-expression-parse": true,
         "eslint>esquery": true,
-        "nock>debug": true,
-        "semver": true
+        "nock>debug": true
       }
     },
     "eslint-plugin-jsdoc>@es-joy/jsdoccomment": {
@@ -2562,6 +2575,20 @@
     "eslint-plugin-jsdoc>@es-joy/jsdoccomment>jsdoc-type-pratt-parser": {
       "globals": {
         "define": true
+      }
+    },
+    "eslint-plugin-jsdoc>semver": {
+      "globals": {
+        "console.error": true,
+        "process": true
+      },
+      "packages": {
+        "eslint-plugin-jsdoc>semver>lru-cache": true
+      }
+    },
+    "eslint-plugin-jsdoc>semver>lru-cache": {
+      "packages": {
+        "semver>lru-cache>yallist": true
       }
     },
     "eslint-plugin-jsdoc>spdx-expression-parse": {
@@ -2788,6 +2815,48 @@
         "nock>debug": true
       }
     },
+    "eslint>@nodelib/fs.walk": {
+      "builtin": {
+        "events.EventEmitter": true,
+        "path.sep": true,
+        "stream.Readable": true
+      },
+      "globals": {
+        "setImmediate": true
+      },
+      "packages": {
+        "eslint>@nodelib/fs.walk>@nodelib/fs.scandir": true,
+        "eslint>@nodelib/fs.walk>fastq": true
+      }
+    },
+    "eslint>@nodelib/fs.walk>@nodelib/fs.scandir": {
+      "builtin": {
+        "fs.lstat": true,
+        "fs.lstatSync": true,
+        "fs.readdir": true,
+        "fs.readdirSync": true,
+        "fs.stat": true,
+        "fs.statSync": true,
+        "path.sep": true
+      },
+      "globals": {
+        "process.versions.node": true
+      },
+      "packages": {
+        "eslint>@nodelib/fs.walk>@nodelib/fs.scandir>run-parallel": true,
+        "fast-glob>@nodelib/fs.stat": true
+      }
+    },
+    "eslint>@nodelib/fs.walk>@nodelib/fs.scandir>run-parallel": {
+      "packages": {
+        "ganache>leveldown>abstract-leveldown>queue-microtask": true
+      }
+    },
+    "eslint>@nodelib/fs.walk>fastq": {
+      "packages": {
+        "eslint>@nodelib/fs.walk>fastq>reusify": true
+      }
+    },
     "eslint>ajv": {
       "globals": {
         "console": true
@@ -2883,6 +2952,45 @@
         "nyc>rimraf": true
       }
     },
+    "eslint>find-up": {
+      "builtin": {
+        "path.dirname": true,
+        "path.parse": true,
+        "path.resolve": true
+      },
+      "packages": {
+        "eslint>find-up>locate-path": true,
+        "eslint>find-up>path-exists": true
+      }
+    },
+    "eslint>find-up>locate-path": {
+      "builtin": {
+        "fs.lstat": true,
+        "fs.lstatSync": true,
+        "fs.stat": true,
+        "fs.statSync": true,
+        "path.resolve": true,
+        "util.promisify": true
+      },
+      "globals": {
+        "process.cwd": true
+      },
+      "packages": {
+        "eslint>find-up>locate-path>p-locate": true
+      }
+    },
+    "eslint>find-up>locate-path>p-locate": {
+      "packages": {
+        "copy-webpack-plugin>p-limit": true
+      }
+    },
+    "eslint>find-up>path-exists": {
+      "builtin": {
+        "fs.access": true,
+        "fs.accessSync": true,
+        "util.promisify": true
+      }
+    },
     "eslint>glob-parent": {
       "builtin": {
         "os.platform": true,
@@ -2921,6 +3029,13 @@
     "eslint>is-glob": {
       "packages": {
         "eslint>is-glob>is-extglob": true
+      }
+    },
+    "eslint>is-path-inside": {
+      "builtin": {
+        "path.relative": true,
+        "path.resolve": true,
+        "path.sep": true
       }
     },
     "eslint>levn": {
@@ -3001,8 +3116,8 @@
         "process.cwd": true
       },
       "packages": {
+        "eslint>@nodelib/fs.walk": true,
         "fast-glob>@nodelib/fs.stat": true,
-        "fast-glob>@nodelib/fs.walk": true,
         "fast-glob>glob-parent": true,
         "globby>merge2": true,
         "stylelint>micromatch": true
@@ -3014,48 +3129,6 @@
         "fs.lstatSync": true,
         "fs.stat": true,
         "fs.statSync": true
-      }
-    },
-    "fast-glob>@nodelib/fs.walk": {
-      "builtin": {
-        "events.EventEmitter": true,
-        "path.sep": true,
-        "stream.Readable": true
-      },
-      "globals": {
-        "setImmediate": true
-      },
-      "packages": {
-        "fast-glob>@nodelib/fs.walk>@nodelib/fs.scandir": true,
-        "fast-glob>@nodelib/fs.walk>fastq": true
-      }
-    },
-    "fast-glob>@nodelib/fs.walk>@nodelib/fs.scandir": {
-      "builtin": {
-        "fs.lstat": true,
-        "fs.lstatSync": true,
-        "fs.readdir": true,
-        "fs.readdirSync": true,
-        "fs.stat": true,
-        "fs.statSync": true,
-        "path.sep": true
-      },
-      "globals": {
-        "process.versions.node.split": true
-      },
-      "packages": {
-        "fast-glob>@nodelib/fs.stat": true,
-        "fast-glob>@nodelib/fs.walk>@nodelib/fs.scandir>run-parallel": true
-      }
-    },
-    "fast-glob>@nodelib/fs.walk>@nodelib/fs.scandir>run-parallel": {
-      "globals": {
-        "process.nextTick": true
-      }
-    },
-    "fast-glob>@nodelib/fs.walk>fastq": {
-      "packages": {
-        "fast-glob>@nodelib/fs.walk>fastq>reusify": true
       }
     },
     "fast-glob>glob-parent": {
@@ -3123,6 +3196,12 @@
       },
       "packages": {
         "fs-extra>graceful-fs": true
+      }
+    },
+    "ganache>leveldown>abstract-leveldown>queue-microtask": {
+      "globals": {
+        "queueMicrotask": true,
+        "setTimeout": true
       }
     },
     "globalthis": {
@@ -3449,8 +3528,8 @@
         "process": true
       },
       "packages": {
-        "analytics-node>ms": true,
-        "gulp-livereload>chalk>supports-color": true
+        "gulp-livereload>chalk>supports-color": true,
+        "jsonwebtoken>ms": true
       }
     },
     "gulp-livereload>event-stream": {
@@ -3576,7 +3655,7 @@
         "process": true
       },
       "packages": {
-        "analytics-node>ms": true,
+        "jsonwebtoken>ms": true,
         "sinon>supports-color": true
       }
     },
@@ -3901,7 +3980,7 @@
         "process": true
       },
       "packages": {
-        "analytics-node>ms": true,
+        "jsonwebtoken>ms": true,
         "sinon>supports-color": true
       }
     },

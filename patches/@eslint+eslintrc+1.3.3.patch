@@ -1,0 +1,29 @@
+diff --git a/node_modules/@eslint/eslintrc/dist/eslintrc.cjs b/node_modules/@eslint/eslintrc/dist/eslintrc.cjs
+index a722b6c..eba5c66 100644
+--- a/node_modules/@eslint/eslintrc/dist/eslintrc.cjs
++++ b/node_modules/@eslint/eslintrc/dist/eslintrc.cjs
+@@ -4,7 +4,6 @@ Object.defineProperty(exports, '__esModule', { value: true });
+ 
+ var debugOrig = require('debug');
+ var fs = require('fs');
+-var importFresh = require('import-fresh');
+ var Module = require('module');
+ var path = require('path');
+ var stripComments = require('strip-json-comments');
+@@ -20,7 +19,6 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
+ 
+ var debugOrig__default = /*#__PURE__*/_interopDefaultLegacy(debugOrig);
+ var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
+-var importFresh__default = /*#__PURE__*/_interopDefaultLegacy(importFresh);
+ var Module__default = /*#__PURE__*/_interopDefaultLegacy(Module);
+ var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
+ var stripComments__default = /*#__PURE__*/_interopDefaultLegacy(stripComments);
+@@ -2559,7 +2557,7 @@ function loadLegacyConfigFile(filePath) {
+ function loadJSConfigFile(filePath) {
+     debug$2(`Loading JS config file: ${filePath}`);
+     try {
+-        return importFresh__default["default"](filePath);
++      return require$1(filePath);
+     } catch (e) {
+         debug$2(`Error reading JavaScript file: ${filePath}`);
+         e.message = `Cannot read config file: ${filePath}\nError: ${e.message}`;
