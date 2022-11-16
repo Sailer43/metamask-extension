@@ -1,1 +1,1 @@
-export { default } from './MFA';
+export { default } from './MFA.container';
