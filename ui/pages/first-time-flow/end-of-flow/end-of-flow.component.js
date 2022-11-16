@@ -136,14 +136,6 @@ export default class EndOfFlowScreen extends PureComponent {
         >
           {t('endOfFlowMessage10')}
         </Button>
-        <Button
-          type="primary"
-          className="first-time-flow__button"
-          onClick={this.onComplete}
-          data-testid="EOF-complete-button"
-        >
-          Link MFA
-        </Button>
         {onboardingInitiator ? (
           <Snackbar
             content={t('onboardingReturnNotice', [
