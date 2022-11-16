@@ -1,17 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Button from '../../../components/ui/button';
-import Snackbar from '../../../components/ui/snackbar';
+import MFA from '../../../components/ui/MFA';
 import MetaFoxLogo from '../../../components/ui/metafox-logo';
-import { SUPPORT_REQUEST_LINK } from '../../../helpers/constants/common';
-import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
-import { returnToOnboardingInitiatorTab } from '../onboarding-initiator-util';
-import {
-  EVENT,
-  EVENT_NAMES,
-  CONTEXT_PROPS,
-} from '../../../../shared/constants/metametrics';
-import ZENDESK_URLS from '../../../helpers/constants/zendesk-url';
+import { INITIALIZE_END_OF_FLOW_ROUTE } from '../../../helpers/constants/routes';
 
 export default class LinkMFAScreen extends PureComponent {
   static contextTypes = {
@@ -21,52 +12,33 @@ export default class LinkMFAScreen extends PureComponent {
 
   static propTypes = {
     history: PropTypes.object,
-    setCompletedOnboarding: PropTypes.func,
-    onboardingInitiator: PropTypes.exact({
-      location: PropTypes.string,
-      tabId: PropTypes.number,
-    }),
+    username: PropTypes.string,
+    onAuthenticationStart: PropTypes.func,
+    onAuthenticationFinish: PropTypes.func,
   };
 
-  async _beforeUnload() {
-    await this._onOnboardingComplete();
-  }
-
-  _removeBeforeUnload() {
-    window.removeEventListener('beforeunload', this._beforeUnload);
-  }
-
-  async _onOnboardingComplete() {
-    const { setCompletedOnboarding } = this.props;
-    await setCompletedOnboarding();
-  }
-
-  onComplete = async () => {
-    const { history, onboardingInitiator } = this.props;
-
-    this._removeBeforeUnload();
-    await this._onOnboardingComplete();
-    if (onboardingInitiator) {
-      await returnToOnboardingInitiatorTab(onboardingInitiator);
-    }
-    history.push(DEFAULT_ROUTE);
+  preAction = async () => {
+    const { onAuthenticationStart } = this.props;
+    onAuthenticationStart();
   };
 
-  componentDidMount() {
-    window.addEventListener('beforeunload', this._beforeUnload.bind(this));
-  }
-
-  componentWillUnmount = () => {
-    this._removeBeforeUnload();
+  postAction = async () => {
+    const { history, onAuthenticationFinish } = this.props;
+    onAuthenticationFinish();
+    history.push(INITIALIZE_END_OF_FLOW_ROUTE);
   };
 
   render() {
-    const { t } = this.context;
-    const { onboardingInitiator } = this.props;
+    const { username } = this.props;
 
     return (
       <div>
         <MetaFoxLogo />
+        <MFA
+          preAction={this.preAction}
+          postAction={this.postAction}
+          username={username}
+        ></MFA>
       </div>
     );
   }

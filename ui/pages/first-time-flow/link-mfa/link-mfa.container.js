@@ -1,18 +1,27 @@
 import { connect } from 'react-redux';
 
-import { getOnboardingInitiator } from '../../../selectors';
-import { setCompletedOnboarding } from '../../../store/actions';
+import { getSelectedAddress } from '../../../selectors';
 import LinkMFAScreen from './link-mfa.component';
+import {
+  hideLoadingIndication,
+  showLoadingIndication,
+} from '../../../store/actions';
 
 const mapStateToProps = (state) => {
   return {
-    onboardingInitiator: getOnboardingInitiator(state),
+    username: getSelectedAddress(state),
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setCompletedOnboarding: () => dispatch(setCompletedOnboarding()),
+    onAuthenticationStart: () =>
+      dispatch(
+        showLoadingIndication(
+          'Please Finish Multi-factor Authentication First!',
+        ),
+      ),
+    onAuthenticationFinish: () => dispatch(hideLoadingIndication()),
   };
 };
 
