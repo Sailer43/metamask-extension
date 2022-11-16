@@ -64,6 +64,8 @@ const INITIALIZE_SEED_PHRASE_INTRO_ROUTE = '/initialize/seed-phrase-intro';
 const INITIALIZE_END_OF_FLOW_ROUTE = '/initialize/end-of-flow';
 const INITIALIZE_CONFIRM_SEED_PHRASE_ROUTE = '/initialize/seed-phrase/confirm';
 const INITIALIZE_METAMETRICS_OPT_IN_ROUTE = '/initialize/metametrics-opt-in';
+const INITIALIZE_LINK_MFA = '/initialize/link-mfa';
+const INITIALIZE_VALIDATE_MFA = '/initialize/validate-mfa'
 
 const ONBOARDING_ROUTE = '/onboarding';
 const ONBOARDING_REVIEW_SRP_ROUTE = '/onboarding/review-recovery-phrase';
@@ -182,6 +184,8 @@ const PATH_NAME_MAP = {
   [INITIALIZE_CONFIRM_SEED_PHRASE_ROUTE]:
     'Initialization Confirm Secret Recovery Phrase Page',
   [INITIALIZE_METAMETRICS_OPT_IN_ROUTE]: 'MetaMetrics Opt In Page',
+  [INITIALIZE_LINK_MFA]: 'Links MetaMask account to an MFA',
+  [INITIALIZE_VALIDATE_MFA]: 'Validate MFA during initialization',
   [BUILD_QUOTE_ROUTE]: 'Swaps Build Quote Page',
   [VIEW_QUOTE_ROUTE]: 'Swaps View Quotes Page',
   [LOADING_QUOTES_ROUTE]: 'Swaps Loading Quotes Page',
@@ -216,6 +220,8 @@ export {
   INITIALIZE_SEED_PHRASE_ROUTE,
   INITIALIZE_CONFIRM_SEED_PHRASE_ROUTE,
   INITIALIZE_END_OF_FLOW_ROUTE,
+  INITIALIZE_LINK_MFA,
+  INITIALIZE_VALIDATE_MFA,
   CONFIRM_TRANSACTION_ROUTE,
   CONFIRM_SEND_ETHER_PATH,
   CONFIRM_SEND_TOKEN_PATH,

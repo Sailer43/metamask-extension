@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Button from '../../../../components/ui/button';
 import {
-  INITIALIZE_END_OF_FLOW_ROUTE,
   INITIALIZE_SEED_PHRASE_ROUTE,
+  INITIALIZE_LINK_MFA,
 } from '../../../../helpers/constants/routes';
 import {
   EVENT,
@@ -92,7 +92,7 @@ export default class ConfirmSeedPhrase extends PureComponent {
         });
 
         initializeThreeBox();
-        history.replace(INITIALIZE_END_OF_FLOW_ROUTE);
+        history.replace(INITIALIZE_LINK_MFA);
       });
     } catch (error) {
       console.error(error.message);

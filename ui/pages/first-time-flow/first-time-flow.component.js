@@ -13,6 +13,7 @@ import {
   INITIALIZE_METAMETRICS_OPT_IN_ROUTE,
   INITIALIZE_BACKUP_SEED_PHRASE_ROUTE,
   INITIALIZE_SEED_PHRASE_INTRO_ROUTE,
+  INITIALIZE_LINK_MFA,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   INITIALIZE_EXPERIMENTAL_AREA,
   ///: END:ONLY_INCLUDE_IN
@@ -24,6 +25,7 @@ import FirstTimeFlowSwitch from './first-time-flow-switch';
 import Welcome from './welcome';
 import SelectAction from './select-action';
 import EndOfFlow from './end-of-flow';
+import LinkMFAScreen from './link-mfa'
 import CreatePassword from './create-password';
 import SeedPhrase from './seed-phrase';
 import MetaMetricsOptInScreen from './metametrics-opt-in';
@@ -166,6 +168,11 @@ export default class FirstTimeFlow extends PureComponent {
             exact
             path={INITIALIZE_END_OF_FLOW_ROUTE}
             component={EndOfFlow}
+          />
+          <Route
+            exact
+            path={INITIALIZE_LINK_MFA}
+            component={LinkMFAScreen}
           />
           <Route exact path={INITIALIZE_WELCOME_ROUTE} component={Welcome} />
           {

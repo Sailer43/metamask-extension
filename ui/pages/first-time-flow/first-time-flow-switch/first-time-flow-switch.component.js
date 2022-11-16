@@ -4,8 +4,8 @@ import { Redirect } from 'react-router-dom';
 import {
   DEFAULT_ROUTE,
   LOCK_ROUTE,
-  INITIALIZE_END_OF_FLOW_ROUTE,
   INITIALIZE_UNLOCK_ROUTE,
+  INITIALIZE_LINK_MFA,
   ///: BEGIN:ONLY_INCLUDE_IN(flask)
   INITIALIZE_EXPERIMENTAL_AREA,
   ///: END:ONLY_INCLUDE_IN
@@ -35,7 +35,7 @@ export default class FirstTimeFlowSwitch extends PureComponent {
     }
 
     if (seedPhraseBackedUp !== null) {
-      return <Redirect to={{ pathname: INITIALIZE_END_OF_FLOW_ROUTE }} />;
+      return <Redirect to={{ pathname: INITIALIZE_LINK_MFA }} />;
     }
 
     if (isUnlocked) {
