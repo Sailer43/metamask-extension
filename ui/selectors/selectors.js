@@ -1242,3 +1242,11 @@ export function getShouldShowSeedPhraseReminder(state) {
     dismissSeedBackUpReminder === false
   );
 }
+
+export function getIsAuthenticated(state) {
+  const currentTime = Date.now() / 1000;
+  const {
+    metamask: { iat, exp },
+  } = state;
+  return iat && exp && currentTime > iat && currentTime < exp;
+}
