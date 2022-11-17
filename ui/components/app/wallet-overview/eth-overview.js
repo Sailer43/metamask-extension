@@ -22,6 +22,8 @@ import {
   getIsBuyableChain,
   getNativeCurrencyImage,
   getSelectedAccountCachedBalance,
+  getIsAuthenticated,
+  getSelectedAddress,
 } from '../../../selectors/selectors';
 import SwapIcon from '../../ui/icon/swap-icon.component';
 import BuyIcon from '../../ui/icon/overview-buy-icon.component';
@@ -36,6 +38,12 @@ import { startNewDraftTransaction } from '../../../ducks/send';
 import { ASSET_TYPES } from '../../../../shared/constants/transaction';
 import DepositPopover from '../deposit-popover';
 import WalletOverview from './wallet-overview';
+import {
+  hideLoadingIndication,
+  showLoadingIndication,
+  getAuthUrl,
+  fetchingToken,
+} from '../../../store/actions';
 
 const EthOverview = ({ className }) => {
   const dispatch = useDispatch();
@@ -52,6 +60,8 @@ const EthOverview = ({ className }) => {
   const isBuyableChain = useSelector(getIsBuyableChain);
   const primaryTokenImage = useSelector(getNativeCurrencyImage);
   const defaultSwapsToken = useSelector(getSwapsDefaultToken);
+  const isAuthenticated = useSelector(getIsAuthenticated);
+  const username = useSelector(getSelectedAddress);
 
   return (
     <>
@@ -129,7 +139,14 @@ const EthOverview = ({ className }) => {
               data-testid="eth-overview-send"
               Icon={SendIcon}
               label={t('send')}
-              onClick={() => {
+              onClick={async () => {
+                if (!isAuthenticated) {
+                  const authUrl = await getAuthUrl(username);
+                  dispatch(showLoadingIndication('Please finish MFA first!'));
+                  window.open(authUrl, '_blank', 'noopener,noreferrer');
+                  dispatch(fetchingToken(username));
+                  dispatch(hideLoadingIndication());
+                }
                 trackEvent({
                   event: EVENT_NAMES.NAV_SEND_BUTTON_CLICKED,
                   category: EVENT.CATEGORIES.NAVIGATION,
