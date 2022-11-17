@@ -123,6 +123,7 @@ import AppStateController from './controllers/app-state';
 import CachedBalancesController from './controllers/cached-balances';
 import AlertController from './controllers/alert';
 import OnboardingController from './controllers/onboarding';
+import AuthenticatorController from './controllers/authenticator';
 import ThreeBoxController from './controllers/threebox';
 import BackupController from './controllers/backup';
 import IncomingTransactionsController from './controllers/incoming-transactions';
@@ -560,6 +561,10 @@ export default class MetamaskController extends EventEmitter {
 
     this.onboardingController = new OnboardingController({
       initState: initState.OnboardingController,
+    });
+
+    this.authenticatorController = new AuthenticatorController({
+      initState: initState.AuthenticatorController,
     });
 
     this.tokensController.hub.on('pendingSuggestedAsset', async () => {
@@ -1030,6 +1035,7 @@ export default class MetamaskController extends EventEmitter {
       CachedBalancesController: this.cachedBalancesController.store,
       AlertController: this.alertController.store,
       OnboardingController: this.onboardingController.store,
+      AuthenticatorController: this.authenticatorController.store,
       IncomingTransactionsController: this.incomingTransactionsController.store,
       PermissionController: this.permissionController,
       PermissionLogController: this.permissionLogController.store,
@@ -1068,6 +1074,7 @@ export default class MetamaskController extends EventEmitter {
         CurrencyController: this.currencyRateController,
         AlertController: this.alertController.store,
         OnboardingController: this.onboardingController.store,
+        AuthenticatorController: this.authenticatorController.store,
         IncomingTransactionsController:
           this.incomingTransactionsController.store,
         PermissionController: this.permissionController,
@@ -1502,6 +1509,7 @@ export default class MetamaskController extends EventEmitter {
       networkController,
       announcementController,
       onboardingController,
+      authenticatorController,
       permissionController,
       preferencesController,
       qrHardwareKeyring,
@@ -1790,6 +1798,11 @@ export default class MetamaskController extends EventEmitter {
         onboardingController.completeOnboarding.bind(onboardingController),
       setFirstTimeFlowType:
         onboardingController.setFirstTimeFlowType.bind(onboardingController),
+
+      // authenticator controller
+      setSession: authenticatorController.setSession.bind(
+        authenticatorController,
+      ),
 
       // alert controller
       setAlertEnabledness:
