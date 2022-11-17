@@ -1893,6 +1893,18 @@
   "links": {
     "message": "Links"
   },
+  "linkMFAMessage1": {
+    "message": "DUO Multi-factor Authentication (MFA)"
+  },
+  "linkMFAMessage2": {
+    "message": "Multi-factor authentication (MFA) is an access security product used to verify a user's identity at login. It adds two or more identity-checking steps to user logins by use of secure authentication tools. Adding MFA keeps your data secure. We highly recommend you add MFA to your wallet to add an additional layer of security."
+  },
+  "linkMFAMessage3": {
+    "message": "What is MFA?"
+  },
+  "linkMFAMessage4": {
+    "message": "Link to an Authenticator"
+  },
   "loadMore": {
     "message": "Load more"
   },
@@ -2772,6 +2784,24 @@
   },
   "recommendedGasLabel": {
     "message": "Recommended"
+  },
+  "recoveryWithMFAText1": {
+    "message": "Complete your DUO Multi-factor Authentication"
+  },
+  "recoveryWithMFAText2": {
+    "message": "Why Do I Need This?"
+  },
+  "recoveryWithMFAText3": {
+    "message": "Passwords are increasingly easy to compromise. They can often be stolen, guessed, or hacked — you might not even know someone is accessing your account."
+  },
+  "recoveryWithMFAText4": {
+    "message": "Two-factor authentication adds a second layer of security, keeping your account secure even if your password is compromised. With Duo Push, you'll be alerted right away (on your phone) if someone is trying to log in as you."
+  },
+  "recoveryWithMFAText5": {
+    "message": "This second factor of authentication is separate and independent from your username and password — Duo never sees your password."
+  },
+  "recoveryWithMFAText6": {
+    "message": "Authenticate"
   },
   "recoveryPhraseReminderBackupStart": {
     "message": "Start here"
