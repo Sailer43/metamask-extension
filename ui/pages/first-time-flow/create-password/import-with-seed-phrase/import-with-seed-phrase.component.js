@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   INITIALIZE_SELECT_ACTION_ROUTE,
-  INITIALIZE_LINK_MFA,
+  INITIALIZE_AUTH_MFA,
 } from '../../../../helpers/constants/routes';
 import CreateNewVault from '../../../../components/app/create-new-vault';
 import {
@@ -58,7 +58,7 @@ export default class ImportWithSeedPhrase extends PureComponent {
 
     await setSeedPhraseBackedUp(true);
     initializeThreeBox();
-    history.replace(INITIALIZE_LINK_MFA);
+    history.replace(INITIALIZE_AUTH_MFA);
   };
 
   render() {
