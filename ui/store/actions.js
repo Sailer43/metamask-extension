@@ -52,6 +52,7 @@ import {
   callBackgroundMethod,
   submitRequestToBackground,
 } from './action-queue';
+import DUO_SECURITY_URLS from '../helpers/constants/duosecurity_url';
 
 export function goHome() {
   return {
@@ -2609,6 +2610,17 @@ export function setCompletedOnboarding() {
   };
 }
 
+export function setAuthSession(token, iat, exp) {
+  return async (dispatch) => {
+    try {
+      await submitRequestToBackground('setSession', [token, iat, exp]);
+    } catch (err) {
+      dispatch(displayWarning(err.message));
+      throw err;
+    }
+  };
+}
+
 export function completeOnboarding() {
   return {
     type: actionConstants.COMPLETE_ONBOARDING,
@@ -3959,6 +3971,48 @@ export function requestAddNetworkApproval(customRpc, originIsMetaMask) {
     } catch (error) {
       log.error(error);
       dispatch(displayWarning('Had a problem changing networks!'));
+    }
+  };
+}
+
+export function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function getAuthUrl(username) {
+  const response = await fetch(
+    `${DUO_SECURITY_URLS.AUTHENTICATOR_URL}${DUO_SECURITY_URLS.REQUEST_URL_ENDPOINT}?username=${username}`,
+  );
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+  const result = await response.json();
+  const { authUrl } = result;
+  if (!authUrl) {
+    throw new Error('Unable to find url');
+  }
+  return authUrl;
+}
+
+export function fetchingToken(username) {
+  return async (dispatch) => {
+    while (true) {
+      let response = await fetch(
+        `${DUO_SECURITY_URLS.AUTHENTICATOR_URL}${DUO_SECURITY_URLS.REQUEST_TOKEN_ENDPOINT}?username=${username}`,
+        {
+          method: 'GET',
+        },
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      let result = await response.json();
+      const { verified, token, iat, exp } = result;
+      if (verified && token) {
+        dispatch(setAuthSession(token, iat, exp));
+        break;
+      }
+      await sleep(2000);
     }
   };
 }
